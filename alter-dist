@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -f /etc/rpm/macros.dist ]; then
+    DIST_TAG=${TAG//./_}
+    sed -i "s/%dist.*/%dist .el${DIST_TAG}/g" /etc/rpm/macros.dist
+fi
+
+if [ -f /usr/lib/rpm/macros.d/macros.dist ]; then
+    DIST_TAG=${TAG//./_}
+    sed -i "s/%dist.*/%dist .el${DIST_TAG}/g" /usr/lib/rpm/macros.d/macros.dist
+fi
